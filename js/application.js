@@ -1,6 +1,8 @@
 $(document).ready(function () {
-  var Chart = function () {
+  var Chart = function (title, subtitle) {
     this.dataSet = [];
+    this.title = title;
+    this.subtitle = subtitle;
   };
 
   Chart.prototype.getData = function () {
@@ -53,10 +55,10 @@ $(document).ready(function () {
   Chart.prototype.graphData = function () {
     var highchartConfig = {
       title: {
-        text: "Historical Gasoline Prices"
+        text: this.title
       },
       subtitle: {
-        text: "Data Taken From Quandl"
+        text: this.subtitle
       },
       legend: {
         align:"right",
@@ -76,7 +78,6 @@ $(document).ready(function () {
     $('#chart').highcharts(highchartConfig);
   };
 
-  var newChart = new Chart();
+  var newChart = new Chart("Historical Gasoline Prices", "Data Taken From Quandl");
   newChart.getData();
-
-})
+});
